@@ -23,13 +23,13 @@ Widget _defaultAppBuilderMethod(BuildContext context, Widget child) {
       return childWidget ?? child;
     },
     debugShowCheckedModeBanner: false,
+    routeInformationProvider: _router.routeInformationProvider,
     routeInformationParser: _router.routeInformationParser,
     routerDelegate: _router.routerDelegate,
   );
 }
 
-AppBuilderFunction get materialAppBuilder =>
-    (BuildContext context, Widget child) {
+AppBuilderFunction get materialAppBuilder => (BuildContext context, Widget child) {
       final _router = getRouter(child);
       return MaterialApp.router(
         debugShowCheckedModeBanner: false,
@@ -38,8 +38,7 @@ AppBuilderFunction get materialAppBuilder =>
       );
     };
 
-AppBuilderFunction get cupertinoAppBuilder =>
-    (BuildContext context, Widget child) {
+AppBuilderFunction get cupertinoAppBuilder => (BuildContext context, Widget child) {
       final _router = getRouter(child);
       return CupertinoApp.router(
         debugShowCheckedModeBanner: false,

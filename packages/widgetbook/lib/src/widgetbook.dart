@@ -260,14 +260,12 @@ class Widgetbook<CustomTheme> extends StatefulWidget {
   }
 
   @override
-  State<Widgetbook<CustomTheme>> createState() =>
-      _WidgetbookState<CustomTheme>();
+  State<Widgetbook<CustomTheme>> createState() => _WidgetbookState<CustomTheme>();
 }
 
 class _WidgetbookState<CustomTheme> extends State<Widgetbook<CustomTheme>> {
   final StoryRepository storyRepository = StoryRepository();
-  final SelectedStoryRepository selectedStoryRepository =
-      SelectedStoryRepository();
+  final SelectedStoryRepository selectedStoryRepository = SelectedStoryRepository();
 
   late OrganizerProvider organizerProvider;
   late PreviewProvider previewProvider;
@@ -340,12 +338,9 @@ class _WidgetbookState<CustomTheme> extends State<Widgetbook<CustomTheme>> {
           ),
           create: (_) => RenderingProvider(
             frames: widget.frames,
-            deviceFrameBuilder:
-                widget.deviceFrameBuilder ?? defaultDeviceFrameBuilder,
-            localizationBuilder:
-                widget.localizationBuilder ?? defaultLocalizationBuilder,
-            themeBuilder:
-                widget.themeBuilder ?? defaultThemeBuilder<CustomTheme>(),
+            deviceFrameBuilder: widget.deviceFrameBuilder ?? defaultDeviceFrameBuilder,
+            localizationBuilder: widget.localizationBuilder ?? defaultLocalizationBuilder,
+            themeBuilder: widget.themeBuilder ?? defaultThemeBuilder<CustomTheme>(),
             scaffoldBuilder: widget.scaffoldBuilder ?? defaultScaffoldBuilder,
             appBuilder: widget.appBuilder,
             useCaseBuilder: widget.useCaseBuilder ?? defaultUseCaseBuilder,
@@ -361,6 +356,7 @@ class _WidgetbookState<CustomTheme> extends State<Widgetbook<CustomTheme>> {
         ChangeNotifierProvider.value(value: appInfoProvider),
       ],
       child: MaterialApp.router(
+        routeInformationProvider: goRouter.routeInformationProvider,
         routeInformationParser: goRouter.routeInformationParser,
         routerDelegate: goRouter.routerDelegate,
         title: widget.appInfo.name,
